@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Version>0.1.0</Version>
     <Product>Pulse Deck</Product>
-    <Authors>John Dowdell</Authors>
+    <Authors>John Dowdell; Claude (Anthropic)</Authors>
     <Company>John Dowdell</Company>
     <Copyright>Copyright © 2026 John Dowdell</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

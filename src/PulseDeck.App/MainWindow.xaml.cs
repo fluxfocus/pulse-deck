@@ -194,7 +194,9 @@ public partial class MainWindow : Window
             "to see what difference a change made to the logic states.\n\n" +
             "Also useful for working with multiple Wokwi VCD files.\n\n" +
             "Created by John Dowdell\n" +
-            "https://github.com/fluxfocus\n\n" +
+            "https://github.com/fluxfocus\n" +
+            "A significant portion of the code was written by Claude, Anthropic's AI model, " +
+            "under John's direction.\n\n" +
             "Copyright © 2026 John Dowdell. Released under the MIT License: free to use, modify and " +
             "share, provided the copyright and licence notice is kept. Supplied without warranty.",
             "About Pulse Deck", MessageBoxButton.OK, MessageBoxImage.Information);

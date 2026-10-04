@@ -139,9 +139,11 @@ The tests currently load sample VCD files from a fixed folder on the author's ma
 
 Pulse Deck is pre-1.0. File formats and behaviour may change between versions.
 
-## Author
+## Author and credits
 
 Created by John Dowdell — [github.com/fluxfocus](https://github.com/fluxfocus)
+
+A significant portion of the code and documentation was written by [Claude](https://claude.com), Anthropic's AI model, working through [Claude Code](https://claude.com/claude-code) under John's direction.
 
 Source: [github.com/fluxfocus/pulse-deck](https://github.com/fluxfocus/pulse-deck)
 
