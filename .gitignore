@@ -1,0 +1,21 @@
+# Build output
+bin/
+obj/
+publish/
+dist/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+
+# Test results and coverage
+TestResults/
+*.trx
+coverage*.xml
+
+# OS clutter
+Thumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,113 @@
+<Application x:Class="PulseDeck.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PulseDeck.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <SolidColorBrush x:Key="WindowBg" Color="#1B1D21"/>
+            <SolidColorBrush x:Key="PanelBg" Color="#202227"/>
+            <SolidColorBrush x:Key="PanelBgAlt" Color="#17181B"/>
+            <SolidColorBrush x:Key="BorderBrush1" Color="#33363D"/>
+            <SolidColorBrush x:Key="TextPrimary" Color="#E3E5E8"/>
+            <SolidColorBrush x:Key="TextSecondary" Color="#9AA0A8"/>
+            <SolidColorBrush x:Key="AccentBrush" Color="#4FC3F7"/>
+            <SolidColorBrush x:Key="HoverBg" Color="#2A2D33"/>
+
+            <Style TargetType="Window">
+                <Setter Property="Background" Value="{StaticResource WindowBg}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            </Style>
+
+            <Style TargetType="Menu">
+                <Setter Property="Background" Value="{StaticResource PanelBgAlt}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush1}"/>
+                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            </Style>
+
+            <Style TargetType="MenuItem">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Style.Triggers>
+                    <!-- Dropdown rows render in the OS's own (light) popup chrome, which a plain
+                         Background setter cannot repaint without a full ControlTemplate override —
+                         so give them a dark foreground instead of the light one used on the dark
+                         top-level bar, or they read as near-invisible light-on-light.
+                         SubmenuItem/SubmenuHeader cover a Menu's File/View/Help dropdowns; a plain
+                         ContextMenu's own items (no enclosing Menu) instead get Role=TopLevelItem —
+                         still on the same light popup chrome, so it needs the same dark foreground. -->
+                    <Trigger Property="Role" Value="SubmenuItem">
+                        <Setter Property="Foreground" Value="#1A1A1A"/>
+                    </Trigger>
+                    <Trigger Property="Role" Value="SubmenuHeader">
+                        <Setter Property="Foreground" Value="#1A1A1A"/>
+                    </Trigger>
+                    <Trigger Property="Role" Value="TopLevelItem">
+                        <Setter Property="Foreground" Value="#1A1A1A"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource PanelBg}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush1}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="10,4"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="3"
+                                    x:Name="border">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="{StaticResource HoverBg}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="CheckBox">
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            </Style>
+
+
+            <Style TargetType="TextBox">
+                <Setter Property="Background" Value="{StaticResource PanelBgAlt}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                <Setter Property="CaretBrush" Value="{StaticResource TextPrimary}"/>
+                <Setter Property="SelectionBrush" Value="{StaticResource AccentBrush}"/>
+            </Style>
+
+            <Style TargetType="ScrollBar">
+                <Setter Property="Background" Value="{StaticResource PanelBgAlt}"/>
+            </Style>
+
+            <Style x:Key="IconButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Padding" Value="4,2"/>
+                <Setter Property="MinWidth" Value="0"/>
+                <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

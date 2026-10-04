@@ -1,0 +1,79 @@
+<Window x:Class="PulseDeck.App.AliasEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Signal Aliases" Height="520" Width="720"
+        WindowStartupLocation="CenterOwner" Background="#1B1D21">
+    <!-- Every color below is explicit/local, not left to the app-wide implicit Window/Button style —
+         see RenameSignalDialog for why that can silently fail for a secondary Window. -->
+    <DockPanel Margin="12">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Save Aliases..." Width="110" Margin="0,0,6,0" Click="SaveAliases_Click"
+                    Background="#202227" Foreground="#E3E5E8" BorderBrush="#33363D"/>
+            <Button Content="Load Aliases..." Width="110" Margin="0,0,6,0" Click="LoadAliases_Click"
+                    Background="#202227" Foreground="#E3E5E8" BorderBrush="#33363D"/>
+            <Button Content="Refresh" Width="80" Margin="0,0,6,0" Click="Refresh_Click"
+                    Background="#202227" Foreground="#E3E5E8" BorderBrush="#33363D"/>
+            <TextBlock x:Name="StatusText" VerticalAlignment="Center" Margin="12,0,0,0" Foreground="#9AA0A8"/>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="Close" Width="80" Click="Close_Click"
+                    Background="#202227" Foreground="#E3E5E8" BorderBrush="#33363D"/>
+        </StackPanel>
+
+        <DataGrid x:Name="Grid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                  CanUserReorderColumns="False" HeadersVisibility="Column" GridLinesVisibility="All"
+                  SelectionUnit="Cell" RowHeight="28" FontSize="12"
+                  Background="#17181B" RowBackground="#1B1D21" AlternatingRowBackground="#1E2024"
+                  Foreground="#E3E5E8" BorderBrush="#33363D" BorderThickness="1"
+                  HorizontalGridLinesBrush="#33363D" VerticalGridLinesBrush="#33363D"
+                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#1A1C20"/>
+                    <Setter Property="Foreground" Value="#C8CCD4"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Padding" Value="8,6"/>
+                    <Setter Property="BorderBrush" Value="#33363D"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#E3E5E8"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Padding" Value="8,4"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#2A3F52"/>
+                            <Setter Property="Foreground" Value="#FFFFFF"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="File" Binding="{Binding FileDisplayName}" IsReadOnly="True" Width="150"/>
+                <DataGridTextColumn Header="Signal" Binding="{Binding HierarchicalPathDisplay}" IsReadOnly="True" Width="220"/>
+                <!-- Alias is the one editable column — its cells get a distinct tint so it's visually
+                     obvious (independent of the grid lines) that this column is the editable one. -->
+                <DataGridTextColumn Header="Alias" Binding="{Binding Alias, UpdateSourceTrigger=PropertyChanged}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Background" Value="#202B38"/>
+                            <Setter Property="Foreground" Value="#E3E5E8"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Padding" Value="8,4"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#2A3F52"/>
+                                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

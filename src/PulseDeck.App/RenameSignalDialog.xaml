@@ -1,0 +1,54 @@
+<Window x:Class="PulseDeck.App.RenameSignalDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Rename Signal" Height="220" Width="380"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        ShowInTaskbar="False" Background="#1B1D21">
+    <!-- Every color here is set explicitly and locally (not left to the app-wide implicit Window
+         style) — a secondary dialog Window rendered with a plain white background and unreadable
+         gray text despite that implicit style existing, the same class of theme quirk that broke
+         the right-click menu earlier. Local values on every element sidestep it for good. -->
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="File:" Foreground="#9AA0A8"/>
+            <TextBlock x:Name="FileText" Grid.Column="1" Foreground="#E3E5E8" TextTrimming="CharacterEllipsis" FontWeight="SemiBold"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Signal:" Foreground="#9AA0A8"/>
+            <TextBlock x:Name="SignalText" Grid.Column="1" Foreground="#E3E5E8" TextTrimming="CharacterEllipsis" FontWeight="SemiBold"/>
+        </Grid>
+
+        <TextBlock Grid.Row="3" Text="Alias:" Foreground="#9AA0A8" Margin="0,0,0,4"/>
+        <TextBox x:Name="AliasBox" Grid.Row="4" Height="26" VerticalContentAlignment="Center"
+                 Background="#17181B" Foreground="#E3E5E8" BorderBrush="#4FC3F7" CaretBrush="#E3E5E8"
+                 KeyDown="AliasBox_KeyDown"/>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,14,0,0">
+            <Button Content="Clear Alias" Width="90" Margin="0,0,16,0" Click="Clear_Click"
+                    Background="#202227" Foreground="#E3E5E8" BorderBrush="#33363D"/>
+            <Button Content="Cancel" Width="80" Margin="0,0,8,0" Click="Cancel_Click" IsCancel="True"
+                    Background="#202227" Foreground="#E3E5E8" BorderBrush="#33363D"/>
+            <Button Content="OK" Width="80" Click="Ok_Click" IsDefault="True"
+                    Background="#202227" Foreground="#E3E5E8" BorderBrush="#33363D"/>
+        </StackPanel>
+    </Grid>
+</Window>
