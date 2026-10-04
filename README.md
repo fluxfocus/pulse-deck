@@ -6,6 +6,8 @@ Pulse Deck is a multi-file VCD waveform viewer for Windows. It opens Value Chang
 
 Loading captures from different simulation runs side by side lets you see what difference a change made to the logic states. It is also useful for working with multiple Wokwi VCD files.
 
+![Pulse Deck showing signals from two VCD captures on one time axis](docs/images/main-window.png)
+
 ## Features
 
 - **Multiple files in one view.** Add any number of VCD files; their signals share one time axis. Each file gets a short alias you can edit, and an "END OF FILE" marker shows where each capture's data stops.
@@ -90,6 +92,8 @@ The status bar shows the cursor time and the visible time window.
 - Type in **Filter** to narrow both lists by name.
 - Right-click a signal name to rename it or choose how its name is displayed.
 - **Signal Aliases...** opens a table of every signal for bulk alias editing, with **Save Aliases...** and **Load Aliases...**.
+
+![The Signal Aliases window, with an editable alias column for every signal](docs/images/alias-editor.png)
 
 ### Markup
 
